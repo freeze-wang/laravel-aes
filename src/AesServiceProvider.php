@@ -36,6 +36,8 @@ class AesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/config/aes.php' => config_path('aes.php'),
+        ]);
     }
 }

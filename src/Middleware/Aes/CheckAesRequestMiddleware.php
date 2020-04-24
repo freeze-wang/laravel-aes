@@ -16,8 +16,8 @@ class CheckAesRequestMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $aes_encode = $request->input(config('common.encode_name','aes_encode'));
-        $aes_decode = aes_decrypt($aes_encode, config('common.signKey'));
+        $aes_encode = $request->input(config('aes.encode_name','aes_encode'));
+        $aes_decode = aes_decrypt($aes_encode, config('aes.signKey'));
         parse_str(trim($aes_decode, "\xEF\xBB\xBF"), $df_array);
         //$df_array = json_decode(trim($df_decode, "\xEF\xBB\xBF"), true);
         //将传入的参数遍历写入request
