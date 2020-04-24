@@ -1,0 +1,22 @@
+{
+    "name": "freezewang/laravel_aes",
+    "description": "aes",
+    "type": "library",
+    "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "FreezeWang\\LaravelPackageAes\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "freeze",
+            "email": "wangdj@500wan.com"
+        }
+    ]
+}
