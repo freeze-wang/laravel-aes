@@ -17,6 +17,7 @@ if(!function_exists('aes_encrypt')) {
 if(!function_exists('aes_decrypt')) {
     function aes_decrypt($string, $key)
     {
+        //填充值为pkcs7padding
         return openssl_decrypt(base64_decode($string), 'AES-128-ECB', $key, OPENSSL_RAW_DATA);
     }
 }

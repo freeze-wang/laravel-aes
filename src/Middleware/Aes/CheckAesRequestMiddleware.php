@@ -16,9 +16,9 @@ class CheckAesRequestMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $df_encode = $request->input(config('aes.encode_name','aes_encode'));
-        $df_decode = \aes_decrypt($df_encode, config('aes.signKey'));
-        parse_str(trim($df_decode, "\xEF\xBB\xBF"), $df_array);
+        $aes_encode = $request->input(config('common.encode_name','aes_encode'));
+        $aes_decode = aes_decrypt($aes_encode, config('common.signKey'));
+        parse_str(trim($aes_decode, "\xEF\xBB\xBF"), $df_array);
         //$df_array = json_decode(trim($df_decode, "\xEF\xBB\xBF"), true);
         //将传入的参数遍历写入request
         if ($df_array) {
@@ -27,7 +27,7 @@ class CheckAesRequestMiddleware
             });
         }
         //标志该次为一次Aes加密的请求,在返回结果的时候判断是否返回密文
-        if (config('app.open_aes_response')) $request->offsetSet('isAes', true);
+        $request->offsetSet('isAes', true);
         //移除密文参数,避免加密的时候用上
         $request->offsetUnset('aes_encode');
 
